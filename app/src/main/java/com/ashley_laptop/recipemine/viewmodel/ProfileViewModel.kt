@@ -9,7 +9,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 
     private val repository = ProfileRepository(application.applicationContext)
 
-    fun getUserProfilePass(name: String, pass: String) = repository.getUserProfile(name)
+    fun setUserProfilePass(name: String, pass: String) = repository.setUserProfilePass(name, pass)
 
     fun setUserProfileDiet(name: String, diet: Boolean) = repository.setUserProfileDiet(name,diet)
 

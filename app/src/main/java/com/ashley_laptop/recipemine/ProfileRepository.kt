@@ -19,7 +19,7 @@ class ProfileRepository(context: Context) {
     }
 
     //function to set the user count in storage
-    fun setUserProfilePassword(name: String, password: String) {
+    fun setUserProfilePass(name: String, password: String) {
         preferences.edit().putString("${name}Pass", password).apply()
     }
 
@@ -40,8 +40,8 @@ class ProfileRepository(context: Context) {
     }
 
     //function to set the user name in storage
-    fun getUserProfilePass(name: String): LiveData<String> =
-        Transformations.map(liveSharedPreferences.listenMultiple(listOf(name), "")) {it[name]}
+    //fun getUserProfilePass(name: String): LiveData<String> =
+    //    Transformations.map(liveSharedPreferences.listenMultiple(listOf(name), "")) {it[name]}
 
     fun getUserProfileDiet(name: String): LiveData<Boolean> =
         Transformations.map(liveSharedPreferences.listenMultiple(listOf(name), false)) {it[name]}
