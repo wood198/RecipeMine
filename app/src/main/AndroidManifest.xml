@@ -9,15 +9,16 @@
         android:roundIcon="@drawable/fork"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OpeningActivity">
+        <activity android:name=".view.OpeningActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".view.SignUpActivity"></activity>
+        <activity android:name=".view.LoginActivity"></activity>
+        <activity android:name=".view.MainActivity"></activity>
+        <activity android:name=".view.ProfileActivity"></activity>
     </application>
 
 </manifest>

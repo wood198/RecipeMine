@@ -4,73 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/spoonsignup"
+    android:background="@drawable/cuttingboard"
     android:visibility="visible"
-    tools:context=".view.SignUpActivity">
+    tools:context=".view.ProfileActivity">
 
     <TextView
-        android:id="@+id/usernameText"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your Username:"
-        android:textColor="#ffffff"
-        app:layout_constraintHorizontal_bias=".045"
-        app:layout_constraintVertical_bias=".38"
+        android:text="Username"
+        android:textSize="35sp"
+        android:textColor="#000000"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintVertical_bias=".25"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        android:id="@+id/enterUsername"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        app:layout_constraintHorizontal_bias=".10"
-        app:layout_constraintVertical_bias=".01"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/usernameText" />
-
-    <TextView
-        android:id="@+id/passwordText"
+    <Switch
+        android:id="@+id/diet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your Password:"
-        android:textColor="#ffffff"
-        app:layout_constraintHorizontal_bias=".045"
-        app:layout_constraintVertical_bias=".05"
+        android:textSize="18sp"
+        android:text="Are you wanting lower calorie options?  "
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintVertical_bias=".2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterUsername" />
+        app:layout_constraintTop_toBottomOf="@id/username"
+        />
 
-    <EditText
-        android:id="@+id/enterPassword"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        app:layout_constraintHorizontal_bias=".10"
-        app:layout_constraintVertical_bias=".10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterUsername" />
-
-    <Button
-        android:id="@+id/signUpButton"
+    <Switch
+        android:id="@+id/veggie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign up"
-        android:textColor="#ffffff"
-        android:background="#000000"
-        app:layout_constraintHorizontal_bias=".10"
-        app:layout_constraintVertical_bias=".250"
+        android:textSize="18sp"
+        android:text="Vegetarian?  "
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintVertical_bias=".2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterPassword" />
+        app:layout_constraintTop_toBottomOf="@id/diet"
+        />
 
+    <Switch
+        android:id="@+id/vegan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Vegan?  "
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintVertical_bias=".25"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/veggie"
+        />
+
+    <Switch
+        android:id="@+id/gluten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Gluten Intolerant?  "
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintVertical_bias=".4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vegan"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
