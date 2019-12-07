@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@id/enterUsername" />
 
     <EditText
-        android:id="@+id/enterPassword"
+        android:id="@+id/enterPass"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="#ffffff"
@@ -57,6 +57,19 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/enterUsername" />
+
+    <TextView
+        android:id="@+id/errorMessageSU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#000000"
+        app:layout_constraintHorizontal_bias=".045"
+        app:layout_constraintVertical_bias=".1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enterPass" />
 
     <Button
         android:id="@+id/signUpButton"
@@ -70,7 +83,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterPassword" />
+        app:layout_constraintTop_toBottomOf="@id/enterPass" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

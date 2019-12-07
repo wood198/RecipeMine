@@ -6,10 +6,14 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import com.ashley_laptop.recipemine.R
+import com.ashley_laptop.recipemine.viewmodel.ProfileViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity(){
+class LoginActivity : AppCompatActivity() {
+    private lateinit var profileViewModel: ProfileViewModel
+    private var password: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,16 +27,29 @@ class LoginActivity : AppCompatActivity(){
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
 
+        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
 
         loginButton.setOnClickListener {
-            //check the username and password
-            //if they are in the system and if password is correct for username entered
 
-            //if all info is correct
-            Log.d("linz", "username: ${enterUsername.text}")
-            startActivity(Intent(this, MainActivity::class.java).apply { putExtra("username", enterUsername.text) })
-            //else text of error message becomes existant
+            profileViewModel.getUserProfilePass("${enterUsername.text}Pass").observe(this,
+                androidx.lifecycle.Observer {getPass(it)})
+
+            Log.d("ash2", "password: ${password}")
+            if (password != enterPassword.text.toString()) {
+                errorMessage.text = "create account or incorrect username/password"
+            } else {
+                startActivity(Intent(this, MainActivity::class.java).apply {
+                    putExtra(
+                        "username",
+                        enterUsername.text
+                    )
+                })
+            }
         }
+
     }
 
+    private fun getPass(pass: String){
+        password = pass
+    }
 }

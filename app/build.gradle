@@ -39,4 +39,6 @@ dependencies {
     kapt "android.arch.lifecycle:compiler:1.1.1"
 
     implementation "com.github.ibrahimsn98:live-preferences:1.6"
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation "com.spoonacular:javascript-client:1.0"
 }

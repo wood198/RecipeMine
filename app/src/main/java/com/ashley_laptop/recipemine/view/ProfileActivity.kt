@@ -14,7 +14,7 @@ class ProfileActivity : AppCompatActivity() {
     private var isVeggies: Boolean = false
     private var isVegans: Boolean = false
     private var isGlutens: Boolean = false
-    private var isDiets: Boolean = false
+    private var isDairys: Boolean = false
 
 
     private fun getUserName() = intent.extras?.get("username").toString().trim()
@@ -22,34 +22,80 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        Log.d("linz3", "username: ${getUserName()}")
 
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
-//        profileViewModel.getUserProfilePass(getUserName()).observe(this,
-//            androidx.lifecycle.Observer {updateProfile(it)})
+        profileViewModel.getUserProfileDairy("${getUserName()}Dairy").observe(this,
+            androidx.lifecycle.Observer {updateProfileDairy(it)})
+        profileViewModel.getUserProfileVeggie("${getUserName()}Veggie").observe(this,
+            androidx.lifecycle.Observer {updateProfileVeggie(it)})
+        profileViewModel.getUserProfileVegan("${getUserName()}Vegan").observe(this,
+            androidx.lifecycle.Observer {updateProfileVegan(it)})
+        profileViewModel.getUserProfileGluten("${getUserName()}Gluten").observe(this,
+            androidx.lifecycle.Observer {updateProfileGluten(it)})
 
 
         user = getUserName()
         username.text = "User: ${user.toString()}"
 
-        if(diet.isChecked){
-            isDiets = true
-            profileViewModel.setUserProfileDiet(getUserName(), isDiets)
-        }
+        //profileViewModel.setUserProfilePass(getUserName(), password)
 
-        if(veggie.isChecked){
-            isVeggies = true
-            profileViewModel.setUserProfileVeggie(getUserName(), isVeggies)
-        }
+        saveButton.setOnClickListener {
+            if(dairy.isChecked){
+                isDairys = true
+                profileViewModel.setUserProfileDairy(getUserName(), isDairys)
+            }else{
+                profileViewModel.setUserProfileDairy(getUserName(), false)
+            }
 
-        if(vegan.isChecked){
-            isVegans = true
-            profileViewModel.setUserProfileVegan(getUserName(), isVegans)
-        }
+            if(veggie.isChecked){
+                isVeggies = true
+                profileViewModel.setUserProfileVeggie(getUserName(), isVeggies)
+            }else{
+                profileViewModel.setUserProfileVeggie(getUserName(), false)
+            }
 
-        if(gluten.isChecked){
-            isGlutens = true
-            profileViewModel.setUserProfileGluten(getUserName(), isGlutens)
+            if(vegan.isChecked){
+                isVegans = true
+                profileViewModel.setUserProfileVegan(getUserName(), isVegans)
+            }else{
+                profileViewModel.setUserProfileVegan(getUserName(), false)
+            }
+
+            if(gluten.isChecked){
+                isGlutens = true
+                profileViewModel.setUserProfileGluten(getUserName(), isGlutens)
+            }else{
+                profileViewModel.setUserProfileGluten(getUserName(), false)
+            }
+
+        }
+    }
+
+    private fun updateProfileDairy(dairys: Boolean) {
+        isDairys = dairys
+        if (isDairys) {
+            dairy.setChecked(true)
+        }
+    }
+
+    private fun updateProfileVeggie(veggies: Boolean){
+        isVeggies = veggies
+        if (isVeggies) {
+            veggie.setChecked(true)
+        }
+    }
+
+    private fun updateProfileVegan(vegans: Boolean){
+        isVegans = vegans
+        if(isVegans) {
+            vegan.setChecked(true)
+        }
+    }
+
+    private fun updateProfileGluten(glutens: Boolean) {
+        isGlutens = glutens
+        if(isGlutens) {
+            gluten.setChecked(true)
         }
     }
     //I am going to need to refactor all the stuff I just did in Main. Profile should be updated

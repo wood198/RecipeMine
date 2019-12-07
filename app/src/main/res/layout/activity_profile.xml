@@ -23,11 +23,11 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <Switch
-        android:id="@+id/diet"
+        android:id="@+id/dairy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:text="Are you wanting lower calorie options?  "
+        android:text="Dairy Free "
         app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintVertical_bias=".2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/diet"
+        app:layout_constraintTop_toBottomOf="@id/dairy"
         />
 
     <Switch
@@ -77,5 +77,19 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vegan"
         />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textSize="15sp"
+        android:textColor="#000000"
+        app:layout_constraintHorizontal_bias=".48"
+        app:layout_constraintVertical_bias=".25"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gluten"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

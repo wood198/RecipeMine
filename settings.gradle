@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':build1.gradle'
 rootProject.name='RecipeMine'

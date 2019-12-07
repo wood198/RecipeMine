@@ -23,8 +23,8 @@ class ProfileRepository(context: Context) {
         preferences.edit().putString("${name}Pass", password).apply()
     }
 
-    fun setUserProfileDiet(name: String, diet: Boolean) {
-        preferences.edit().putBoolean("${name}Diet", diet).apply()
+    fun setUserProfileDairy(name: String, dairy: Boolean) {
+        preferences.edit().putBoolean("${name}Diet", dairy).apply()
     }
 
     fun setUserProfileVeggie(name: String, veggie: Boolean) {
@@ -40,8 +40,8 @@ class ProfileRepository(context: Context) {
     }
 
     //function to set the user name in storage
-    //fun getUserProfilePass(name: String): LiveData<String> =
-    //    Transformations.map(liveSharedPreferences.listenMultiple(listOf(name), "")) {it[name]}
+    fun getUserProfilePass(name: String): LiveData<String> =
+        Transformations.map(liveSharedPreferences.listenMultiple(listOf(name), "")) {it[name]}
 
     fun getUserProfileDiet(name: String): LiveData<Boolean> =
         Transformations.map(liveSharedPreferences.listenMultiple(listOf(name), false)) {it[name]}
