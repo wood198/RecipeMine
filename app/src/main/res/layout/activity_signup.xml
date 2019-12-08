@@ -26,12 +26,12 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-        app:layout_constraintHorizontal_bias=".10"
-        app:layout_constraintVertical_bias=".01"
+        app:layout_constraintHorizontal_bias=".050"
+        app:layout_constraintVertical_bias=".41"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/usernameText" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/passwordText"
@@ -40,23 +40,23 @@
         android:text="Enter your Password:"
         android:textColor="#ffffff"
         app:layout_constraintHorizontal_bias=".045"
-        app:layout_constraintVertical_bias=".05"
+        app:layout_constraintVertical_bias=".45"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterUsername" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/enterPass"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-        app:layout_constraintHorizontal_bias=".10"
-        app:layout_constraintVertical_bias=".10"
+        app:layout_constraintHorizontal_bias=".050"
+        app:layout_constraintVertical_bias=".485"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterUsername" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/errorMessageSU"
@@ -65,11 +65,11 @@
         android:text=""
         android:textColor="#000000"
         app:layout_constraintHorizontal_bias=".045"
-        app:layout_constraintVertical_bias=".1"
+        app:layout_constraintVertical_bias=".54"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterPass" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/signUpButton"
@@ -79,11 +79,11 @@
         android:textColor="#ffffff"
         android:background="#000000"
         app:layout_constraintHorizontal_bias=".10"
-        app:layout_constraintVertical_bias=".250"
+        app:layout_constraintVertical_bias=".63"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterPass" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

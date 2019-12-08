@@ -4,22 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mainpage"
     tools:context=".view.MainActivity">
 
     <Button
         android:id="@+id/goToProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
+        android:background="@android:color/transparent"
+        app:layout_constraintHorizontal_bias=".97"
+        app:layout_constraintVertical_bias=".023"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/cuisineRecipes"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="265dp" />
+        android:text="Recipes by Cuisine"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:backgroundTint="#000000"
+        app:layout_constraintHorizontal_bias=".52"
+        app:layout_constraintVertical_bias=".256"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/ingrediantRecipes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recipes by Ingredients"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:backgroundTint="#000000"
+        app:layout_constraintHorizontal_bias=".52"
+        app:layout_constraintVertical_bias=".33"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/imgcard1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+<!--            <ImageView-->
+<!--                android:id="@+id/imgcard2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                />-->
+<!--            <ImageView-->
+<!--                android:id="@+id/imgcard3"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                />-->
+<!--            <ImageView-->
+<!--                android:id="@+id/imgcard4"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                />-->
+<!--            <ImageView-->
+<!--                android:id="@+id/imgcard5"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                />-->
+<!--            <ImageView-->
+<!--                android:id="@+id/imgcard6"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                />-->
+<!--            <ImageView-->
+<!--                android:id="@+id/imgcard7"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                />-->
+<!--            <ImageView-->
+<!--                android:id="@+id/imgcard8"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

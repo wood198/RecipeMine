@@ -1,28 +1,23 @@
 package com.ashley_laptop.recipemine.view
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.ashley_laptop.recipemine.R
-import com.ashley_laptop.recipemine.models.Search
-import com.ashley_laptop.recipemine.viewmodel.ProfileViewModel
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
+import com.ashley_laptop.recipemine.models.Search
+import com.ashley_laptop.recipemine.viewmodel.ProfileViewModel
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-import java.io.InputStream
-import java.net.URL
 
 
-class MainActivity : AppCompatActivity() {
+class IngrediantActivity : AppCompatActivity() {
     private lateinit var profileViewModel: ProfileViewModel
     private var user: String = ""
     private var isVeggies: Boolean = false
@@ -36,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_ingrediant)
 
         user = getUserName()
 
@@ -54,21 +49,18 @@ class MainActivity : AppCompatActivity() {
         val searchResults:Search? = searchTask.execute("query=dinner&number=8&diet=${diets}&intolerances=${intolerances}").get()
         Log.d("TEMP", searchResults?.mResults?.get(0)?.mTitle)
 
-        val createUri1 = searchResults?.mBaseUri + searchResults?.mResults?.get(0)?.mId + "-240x150.jpg"
-        val createUri2 = searchResults?.mBaseUri + searchResults?.mResults?.get(1)?.mId + "-240x150.jpg"
-        val createUri3 = searchResults?.mBaseUri + searchResults?.mResults?.get(2)?.mId + "-240x150.jpg"
-        val createUri4 = searchResults?.mBaseUri + searchResults?.mResults?.get(3)?.mId + "-240x150.jpg"
-        val createUri5 = searchResults?.mBaseUri + searchResults?.mResults?.get(4)?.mId + "-240x150.jpg"
-        val createUri6 = searchResults?.mBaseUri + searchResults?.mResults?.get(5)?.mId + "-240x150.jpg"
-        val createUri7 = searchResults?.mBaseUri + searchResults?.mResults?.get(6)?.mId + "-240x150.jpg"
-        val createUri8 = searchResults?.mBaseUri + searchResults?.mResults?.get(7)?.mId + "-240x150.jpg"
+        val createUri1 = Uri.parse(searchResults?.mBaseUri + searchResults?.mResults?.get(0)?.mId + "-240x150.jpg")
+        val createUri2 = Uri.parse(searchResults?.mBaseUri + searchResults?.mResults?.get(1)?.mId + "-240x150.jpg")
+        val createUri3 = Uri.parse(searchResults?.mBaseUri + searchResults?.mResults?.get(2)?.mId + "-240x150.jpg")
+        val createUri4 = Uri.parse(searchResults?.mBaseUri + searchResults?.mResults?.get(3)?.mId + "-240x150.jpg")
+        val createUri5 = Uri.parse(searchResults?.mBaseUri + searchResults?.mResults?.get(4)?.mId + "-240x150.jpg")
+        val createUri6 = Uri.parse(searchResults?.mBaseUri + searchResults?.mResults?.get(5)?.mId + "-240x150.jpg")
+        val createUri7 = Uri.parse(searchResults?.mBaseUri + searchResults?.mResults?.get(6)?.mId + "-240x150.jpg")
+        val createUri8 = Uri.parse(searchResults?.mBaseUri + searchResults?.mResults?.get(7)?.mId + "-240x150.jpg")
 
         Log.d("TEMP", createUri1.toString())
 
-        var image: ImageView = findViewById(R.id.imgcard1)
-        DownloadImageTask(image).execute(createUri1)
-
-//        imgcard1.setImageURI(createUri1)
+        imgcard1.setImageURI(createUri1)
 //        imgcard2.setImageURI(createUri2)
 //        imgcard3.setImageURI(createUri3)
 //        imgcard4.setImageURI(createUri4)
@@ -77,48 +69,8 @@ class MainActivity : AppCompatActivity() {
 //        imgcard7.setImageURI(createUri7)
 //        imgcard8.setImageURI(createUri8)
 
-        cuisineRecipes.setOnClickListener {
-
-            startActivity(Intent(this, RecipeActivity::class.java).apply { putExtra("username", user) })
-
-        }
-
-        ingrediantRecipes.setOnClickListener {
-
-            startActivity(Intent(this, IngrediantActivity::class.java).apply { putExtra("username", user) })
-
-        }
-
-        goToProfile.setOnClickListener {
-
-            startActivity(Intent(this, ProfileActivity::class.java).apply { putExtra("username", user) })
-
-        }
-
         //disable back button to the other activities
 
-    }
-
-    override fun onBackPressed() { // do nothing.
-    }
-
-    private class DownloadImageTask(var bmImage: ImageView) :
-        AsyncTask<String?, Void?, Bitmap?>() {
-        protected override fun doInBackground(vararg urls: String?): Bitmap? {
-            val urldisplay = urls[0]
-            var mIcon11: Bitmap? = null
-            try {
-                val inputStream: InputStream = URL(urldisplay).openStream()
-                mIcon11 = BitmapFactory.decodeStream(inputStream)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-            return mIcon11
-        }
-
-        override fun onPostExecute(result: Bitmap?) {
-            bmImage.setImageBitmap(result)
-        }
     }
 
     class asyncTaskSearch() : AsyncTask<String?, Void, Search?>() {
