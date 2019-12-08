@@ -42,62 +42,88 @@ class MainActivity : AppCompatActivity() {
 
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
         profileViewModel.getUserProfileDairy("${user}Dairy").observe(this,
-            androidx.lifecycle.Observer {dairyData(it)})
+            androidx.lifecycle.Observer { dairyData(it) })
         profileViewModel.getUserProfileVeggie("${user}Veggie").observe(this,
-            androidx.lifecycle.Observer {veggieData(it)})
+            androidx.lifecycle.Observer { veggieData(it) })
         profileViewModel.getUserProfileVegan("${user}Vegan").observe(this,
-            androidx.lifecycle.Observer {veganData(it)})
+            androidx.lifecycle.Observer { veganData(it) })
         profileViewModel.getUserProfileGluten("${user}Gluten").observe(this,
-            androidx.lifecycle.Observer {glutenData(it)})
+            androidx.lifecycle.Observer { glutenData(it) })
 
         val searchTask = asyncTaskSearch()
-        val searchResults:Search? = searchTask.execute("query=dinner&number=8&diet=${diets}&intolerances=${intolerances}").get()
-        Log.d("TEMP", searchResults?.mResults?.get(0)?.mTitle)
+        val searchResults: Search? = searchTask.execute("number=8").get()
+        Log.d("TEMP", searchResults?.mRecipes?.get(0)?.mTitle)
 
-        val createUri1 = searchResults?.mBaseUri + searchResults?.mResults?.get(0)?.mId + "-240x150.jpg"
-        val createUri2 = searchResults?.mBaseUri + searchResults?.mResults?.get(1)?.mId + "-240x150.jpg"
-        val createUri3 = searchResults?.mBaseUri + searchResults?.mResults?.get(2)?.mId + "-240x150.jpg"
-        val createUri4 = searchResults?.mBaseUri + searchResults?.mResults?.get(3)?.mId + "-240x150.jpg"
-        val createUri5 = searchResults?.mBaseUri + searchResults?.mResults?.get(4)?.mId + "-240x150.jpg"
-        val createUri6 = searchResults?.mBaseUri + searchResults?.mResults?.get(5)?.mId + "-240x150.jpg"
-        val createUri7 = searchResults?.mBaseUri + searchResults?.mResults?.get(6)?.mId + "-240x150.jpg"
-        val createUri8 = searchResults?.mBaseUri + searchResults?.mResults?.get(7)?.mId + "-240x150.jpg"
+        val createUri1 =
+            "https://spoonacular.com/recipeImages/" + searchResults?.mRecipes?.get(0)?.mId + "-240x150.jpg"
+        val createUri2 =
+            "https://spoonacular.com/recipeImages/" + searchResults?.mRecipes?.get(1)?.mId + "-240x150.jpg"
+        val createUri3 =
+            "https://spoonacular.com/recipeImages/" + searchResults?.mRecipes?.get(2)?.mId + "-240x150.jpg"
+        val createUri4 =
+            "https://spoonacular.com/recipeImages/" + searchResults?.mRecipes?.get(3)?.mId + "-240x150.jpg"
+        val createUri5 =
+            "https://spoonacular.com/recipeImages/" + searchResults?.mRecipes?.get(4)?.mId + "-240x150.jpg"
+        val createUri6 =
+            "https://spoonacular.com/recipeImages/" + searchResults?.mRecipes?.get(5)?.mId + "-240x150.jpg"
+        val createUri7 =
+            "https://spoonacular.com/recipeImages/" + searchResults?.mRecipes?.get(6)?.mId + "-240x150.jpg"
+        val createUri8 =
+            "https://spoonacular.com/recipeImages/" + searchResults?.mRecipes?.get(7)?.mId + "-240x150.jpg"
 
-        Log.d("TEMP", createUri1.toString())
+        Log.d("TEMP", createUri1)
 
         var image: ImageView = findViewById(R.id.imgcard1)
         DownloadImageTask(image).execute(createUri1)
-
-//        imgcard1.setImageURI(createUri1)
-//        imgcard2.setImageURI(createUri2)
-//        imgcard3.setImageURI(createUri3)
-//        imgcard4.setImageURI(createUri4)
-//        imgcard5.setImageURI(createUri5)
-//        imgcard6.setImageURI(createUri6)
-//        imgcard7.setImageURI(createUri7)
-//        imgcard8.setImageURI(createUri8)
+        var image2: ImageView = findViewById(R.id.imgcard2)
+        DownloadImageTask(image2).execute(createUri2)
+        var image3: ImageView = findViewById(R.id.imgcard3)
+        DownloadImageTask(image3).execute(createUri3)
+        var image4: ImageView = findViewById(R.id.imgcard4)
+        DownloadImageTask(image4).execute(createUri4)
+        var image5: ImageView = findViewById(R.id.imgcard5)
+        DownloadImageTask(image5).execute(createUri5)
+        var image6: ImageView = findViewById(R.id.imgcard6)
+        DownloadImageTask(image6).execute(createUri6)
+        var image7: ImageView = findViewById(R.id.imgcard7)
+        DownloadImageTask(image7).execute(createUri7)
+        var image8: ImageView = findViewById(R.id.imgcard8)
+        DownloadImageTask(image8).execute(createUri8)
 
         cuisineRecipes.setOnClickListener {
 
-            startActivity(Intent(this, RecipeActivity::class.java).apply { putExtra("username", user) })
+            startActivity(Intent(this, RecipeActivity::class.java).apply {
+                putExtra(
+                    "username",
+                    user
+                )
+            })
 
         }
 
         ingrediantRecipes.setOnClickListener {
 
-            startActivity(Intent(this, IngrediantActivity::class.java).apply { putExtra("username", user) })
+            startActivity(Intent(this, IngredientActivity::class.java).apply {
+                putExtra(
+                    "username",
+                    user
+                )
+            })
 
         }
 
         goToProfile.setOnClickListener {
 
-            startActivity(Intent(this, ProfileActivity::class.java).apply { putExtra("username", user) })
+            startActivity(Intent(this, ProfileActivity::class.java).apply {
+                putExtra(
+                    "username",
+                    user
+                )
+            })
 
         }
-
-        //disable back button to the other activities
-
     }
+
 
     override fun onBackPressed() { // do nothing.
     }
@@ -128,7 +154,7 @@ class MainActivity : AppCompatActivity() {
                 val client = OkHttpClient()
 
                 val request: Request = Request.Builder()
-                    .url("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?" + params.get(0))
+                    .url("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?" + params.get(0))
                     .get()
                     .addHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
                     .addHeader("x-rapidapi-key", "526f7ebcf2msh61e773bb3c87effp12ca72jsn7c53ce0c2887")

@@ -9,6 +9,8 @@ class Search private constructor(
     @field:SerializedName("number") val mNumber: Int,
     @field:SerializedName("totalResults") val mTotalResults: Int,
     @field:SerializedName("processingTimeMs") val mProcessingTimeMs: Int,
-    @field:SerializedName("expires") val mExpires: Long
+    @field:SerializedName("expires") val mExpires: Long,
+    @field:SerializedName("recipes") val mRecipes: ArrayList<Recipe>
+
 ) {
 }
