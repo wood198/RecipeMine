@@ -248,7 +248,7 @@ class MainActivity : AppCompatActivity() {
                     .url("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?" + params.get(0))
                     .get()
                     .addHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
-                    .addHeader("x-rapidapi-key", "526f7ebcf2msh61e773bb3c87effp12ca72jsn7c53ce0c2887")
+                    .addHeader("x-rapidapi-key", PUT_KEY_HERE)
                     .build()
 
                 val response: Response = client.newCall(request).execute()
