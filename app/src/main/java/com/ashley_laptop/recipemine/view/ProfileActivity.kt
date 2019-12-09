@@ -2,6 +2,7 @@ package com.ashley_laptop.recipemine.view
 
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.ashley_laptop.recipemine.R
@@ -22,6 +23,8 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+
 
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
         profileViewModel.getUserProfileDairy("${getUserName()}Dairy").observe(this,
