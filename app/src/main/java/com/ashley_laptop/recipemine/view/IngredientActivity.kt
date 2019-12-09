@@ -67,7 +67,7 @@ class IngredientActivity : AppCompatActivity() {
             ingredients = enterIngredient.text.toString()
 
             val searchTask = asyncTaskSearch()
-            val searchResults:List<Recipe>? = searchTask.execute("ingredients=${ingredients}&number=8&ingredients=${ingredients}").get()
+            val searchResults:List<Recipe>? = searchTask.execute("ingredients=${ingredients}&number=8").get()
             Log.d("TEMP", searchResults?.get(0)?.mTitle)
 
             val createUri1 = "https://spoonacular.com/recipeImages/" + searchResults?.get(0)?.mId + "-240x150.jpg"
@@ -78,6 +78,7 @@ class IngredientActivity : AppCompatActivity() {
             val createUri6 = "https://spoonacular.com/recipeImages/" + searchResults?.get(5)?.mId + "-240x150.jpg"
             val createUri7 = "https://spoonacular.com/recipeImages/" + searchResults?.get(6)?.mId + "-240x150.jpg"
             val createUri8 = "https://spoonacular.com/recipeImages/" + searchResults?.get(7)?.mId + "-240x150.jpg"
+
 
             var image: ImageView = findViewById(R.id.imgcard1)
             DownloadImageTask(image).execute(createUri1)
@@ -95,6 +96,24 @@ class IngredientActivity : AppCompatActivity() {
             DownloadImageTask(image7).execute(createUri7)
             var image8: ImageView = findViewById(R.id.imgcard8)
             DownloadImageTask(image8).execute(createUri8)
+
+            val title1 = searchResults?.get(0)?.mTitle
+            val title2 = searchResults?.get(1)?.mTitle
+            val title3 = searchResults?.get(2)?.mTitle
+            val title4 = searchResults?.get(3)?.mTitle
+            val title5 = searchResults?.get(4)?.mTitle
+            val title6 = searchResults?.get(5)?.mTitle
+            val title7 = searchResults?.get(6)?.mTitle
+            val title8 = searchResults?.get(7)?.mTitle
+
+            recipeTitle1.text = title1
+            recipeTitle2.text = title2
+            recipeTitle3.text = title3
+            recipeTitle4.text = title4
+            recipeTitle5.text = title5
+            recipeTitle6.text = title6
+            recipeTitle7.text = title7
+            recipeTitle8.text = title8
 
         }
 

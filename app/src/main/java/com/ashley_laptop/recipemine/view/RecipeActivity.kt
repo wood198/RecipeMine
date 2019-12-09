@@ -64,7 +64,7 @@ class RecipeActivity : AppCompatActivity() {
 
 
             val searchTask = asyncTaskSearch()
-            val searchResults:Search? = searchTask.execute("cuisine=${cuisine}&number=10&diet=${diets}&intolerances=${intolerances}").get()
+            val searchResults:Search? = searchTask.execute("cuisine=${cuisine}&number=8&diet=${diets}&intolerances=${intolerances}").get()
             Log.d("TEMP", searchResults?.mResults?.get(0)?.mTitle)
 
             val createUri1 = "https://spoonacular.com/recipeImages/" + searchResults?.mResults?.get(0)?.mId + "-240x150.jpg"
@@ -94,6 +94,24 @@ class RecipeActivity : AppCompatActivity() {
             DownloadImageTask(image7).execute(createUri7)
             var image8: ImageView = findViewById(R.id.imgcard8)
             DownloadImageTask(image8).execute(createUri8)
+
+            val title1 = searchResults?.mResults?.get(0)?.mTitle
+            val title2 = searchResults?.mResults?.get(1)?.mTitle
+            val title3 = searchResults?.mResults?.get(2)?.mTitle
+            val title4 = searchResults?.mResults?.get(3)?.mTitle
+            val title5 = searchResults?.mResults?.get(4)?.mTitle
+            val title6 = searchResults?.mResults?.get(5)?.mTitle
+            val title7 = searchResults?.mResults?.get(6)?.mTitle
+            val title8 = searchResults?.mResults?.get(7)?.mTitle
+
+            recipeTitle1.text = title1
+            recipeTitle2.text = title2
+            recipeTitle3.text = title3
+            recipeTitle4.text = title4
+            recipeTitle5.text = title5
+            recipeTitle6.text = title6
+            recipeTitle7.text = title7
+            recipeTitle8.text = title8
 
         }
 

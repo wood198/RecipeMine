@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
 
         val searchTask = asyncTaskSearch()
         val searchResults: Search? = searchTask.execute("number=8").get()
-        Log.d("TEMP", searchResults?.mRecipes?.get(0)?.mTitle)
 
         val createUri1 =
             "https://spoonacular.com/recipeImages/" + searchResults?.mRecipes?.get(0)?.mId + "-240x150.jpg"
@@ -71,8 +70,6 @@ class MainActivity : AppCompatActivity() {
         val createUri8 =
             "https://spoonacular.com/recipeImages/" + searchResults?.mRecipes?.get(7)?.mId + "-240x150.jpg"
 
-        Log.d("TEMP", createUri1)
-
         var image: ImageView = findViewById(R.id.imgcard1)
         DownloadImageTask(image).execute(createUri1)
         var image2: ImageView = findViewById(R.id.imgcard2)
@@ -89,6 +86,97 @@ class MainActivity : AppCompatActivity() {
         DownloadImageTask(image7).execute(createUri7)
         var image8: ImageView = findViewById(R.id.imgcard8)
         DownloadImageTask(image8).execute(createUri8)
+
+        val title1 = searchResults?.mRecipes?.get(0)?.mTitle
+        val title2 = searchResults?.mRecipes?.get(1)?.mTitle
+        val title3 = searchResults?.mRecipes?.get(2)?.mTitle
+        val title4 = searchResults?.mRecipes?.get(3)?.mTitle
+        val title5 = searchResults?.mRecipes?.get(4)?.mTitle
+        val title6 = searchResults?.mRecipes?.get(5)?.mTitle
+        val title7 = searchResults?.mRecipes?.get(6)?.mTitle
+        val title8 = searchResults?.mRecipes?.get(7)?.mTitle
+
+        recipeTitle1.text = title1
+        recipeTitle2.text = title2
+        recipeTitle3.text = title3
+        recipeTitle4.text = title4
+        recipeTitle5.text = title5
+        recipeTitle6.text = title6
+        recipeTitle7.text = title7
+        recipeTitle8.text = title8
+
+        row1.setOnClickListener {
+
+            val url = searchResults?.mRecipes?.get(0)?.mSourceUrl
+
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+
+        }
+        row2.setOnClickListener {
+
+            val url = searchResults?.mRecipes?.get(1)?.mSourceUrl
+
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+
+        }
+        row3.setOnClickListener {
+
+            val url = searchResults?.mRecipes?.get(2)?.mSourceUrl
+
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+
+        }
+        row4.setOnClickListener {
+
+            val url = searchResults?.mRecipes?.get(3)?.mSourceUrl
+
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+
+        }
+        row5.setOnClickListener {
+
+            val url = searchResults?.mRecipes?.get(4)?.mSourceUrl
+
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+
+        }
+        row6.setOnClickListener {
+
+            val url = searchResults?.mRecipes?.get(5)?.mSourceUrl
+
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+
+        }
+        row7.setOnClickListener {
+
+            val url = searchResults?.mRecipes?.get(6)?.mSourceUrl
+
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+
+        }
+        row8.setOnClickListener {
+
+            val url = searchResults?.mRecipes?.get(7)?.mSourceUrl
+
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+
+        }
 
         cuisineRecipes.setOnClickListener {
 
